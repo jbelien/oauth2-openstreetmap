@@ -63,7 +63,7 @@ class OpenStreetMapResourceOwner implements ResourceOwnerInterface
      */
     public function getImage()
     {
-        return $this->getValueByKey($this->response, 'user.img');
+        return $this->getValueByKey($this->response, 'user.img.href');
     }
 
     /**
