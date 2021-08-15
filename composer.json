@@ -1,6 +1,7 @@
 {
     "name": "jbelien/oauth2-openstreetmap",
     "description": "OpenStreetMap OAuth 2.0 support for the PHP League's OAuth 2.0 Client ",
+    "license": "MIT",
     "keywords": [
         "oauth",
         "oauth2",
