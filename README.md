@@ -14,7 +14,8 @@ composer require jbelien/oauth2-OpenStreetMap
 $OpenStreetMapProvider = new \JBelien\OAuth2\Client\Provider\OpenStreetMap([
     'clientId'     => 'yourId',          // The client ID assigned to you by OpenStreetMap.org
     'clientSecret' => 'yourSecret',      // The client password assigned to you by OpenStreetMap.org
-    'redirectUri'  => 'yourRedirectUri'  // The return URL you specified for your app on OpenStreetMap.org
+    'redirectUri'  => 'yourRedirectUri', // The return URL you specified for your app on OpenStreetMap.org
+    'dev'          => false              // Whether to use the OpenStreetMap test environment at https://master.apis.dev.openstreetmap.org/
 ]);
 
 // Get authorization code
