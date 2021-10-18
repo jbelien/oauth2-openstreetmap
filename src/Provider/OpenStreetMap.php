@@ -12,7 +12,7 @@ class OpenStreetMap extends AbstractProvider
 {
     use BearerAuthorizationTrait;
 
-    private $dev = false;
+    protected $dev = false;
 
     public function __construct(array $options = [], array $collaborators = [])
     {
