@@ -6,7 +6,7 @@ use JBelien\OAuth2\Client\Provider\OpenStreetMapResourceOwner;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 
-class GithubResourceOwnerTest extends TestCase
+class OpenStreeMapResourceOwnerTest extends TestCase
 {
     public function testUrlIsNullWithoutDomainOrNickname(): void
     {
