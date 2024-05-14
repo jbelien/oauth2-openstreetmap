@@ -16,6 +16,11 @@ $OpenStreetMapProvider = new \JBelien\OAuth2\Client\Provider\OpenStreetMap([
     'clientSecret' => 'yourSecret',      // The client password assigned to you by OpenStreetMap.org
     'redirectUri'  => 'yourRedirectUri', // The return URL you specified for your app on OpenStreetMap.org
     'dev'          => false              // Whether to use the OpenStreetMap test environment at https://master.apis.dev.openstreetmap.org/
+    /*
+    For a particular need you can change the default server urls with this two options:
+    'osm_base_url' =>  'https://www.openstreetmap.org',
+    'osm_base_url_dev' => 'https://master.apis.dev.openstreetmap.org',
+    */
 ]);
 
 // Get authorization code
@@ -56,11 +61,11 @@ if (!isset($_GET['code'])) {
     } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
         exit($e->getMessage());
     }
-        
+
     // Now you can store the results to session etc.
     $_SESSION['accessToken'] = $accessToken;
     $_SESSION['resourceOwner'] = $resourceOwner;
-    
+
     var_dump(
         $resourceOwner->getId(),
         $resourceOwner->getDisplayName(),
