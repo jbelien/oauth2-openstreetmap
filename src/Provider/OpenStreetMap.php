@@ -13,13 +13,27 @@ class OpenStreetMap extends AbstractProvider
     use BearerAuthorizationTrait;
 
     protected $dev = false;
+    protected $base_url = 'https://www.openstreetmap.org' ;
+    protected $base_url_dev = 'https://master.apis.dev.openstreetmap.org' ;
 
+    /**
+     * Available options for OpenStreetMap provider:
+     * - dev : if True use "base_url_dev" otherwise "base_url".
+     * - osm_base_url : Url to use when "dev" is False.
+     * - osm_base_url_dev : Url to use when "dev" is True.
+     */
     public function __construct(array $options = [], array $collaborators = [])
     {
         parent::__construct($options, $collaborators);
 
         if (isset($options['dev'])) {
             $this->dev = (bool) $options['dev'];
+        }
+        if (isset($options['osm_base_url'])) {
+            $this->base_url = $options['osm_base_url'];
+        }
+        if (isset($options['osm_base_url_dev'])) {
+            $this->base_url_dev = $options['osm_base_url_dev'];
         }
     }
 
@@ -31,8 +45,8 @@ class OpenStreetMap extends AbstractProvider
     public function getBaseAuthorizationUrl()
     {
         return $this->dev ?
-            'https://master.apis.dev.openstreetmap.org/oauth2/authorize' :
-            'https://www.openstreetmap.org/oauth2/authorize';
+            $this->base_url_dev.'/oauth2/authorize' :
+            $this->base_url.'/oauth2/authorize';
     }
 
     /**
@@ -45,8 +59,8 @@ class OpenStreetMap extends AbstractProvider
     public function getBaseAccessTokenUrl(array $params)
     {
         return $this->dev ?
-            'https://master.apis.dev.openstreetmap.org/oauth2/token' :
-            'https://www.openstreetmap.org/oauth2/token';
+            $this->base_url_dev.'/oauth2/token' :
+            $this->base_url.'/oauth2/token';
     }
 
     /**
@@ -59,8 +73,8 @@ class OpenStreetMap extends AbstractProvider
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
         return $this->dev ?
-            'https://master.apis.dev.openstreetmap.org/api/0.6/user/details.json' :
-            'https://api.openstreetmap.org/api/0.6/user/details.json';
+            $this->base_url_dev.'/api/0.6/user/details.json' :
+            $this->base_url.'/api/0.6/user/details.json';
     }
 
     /**
