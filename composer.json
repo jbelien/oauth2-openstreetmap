@@ -15,7 +15,7 @@
         "league/oauth2-client": "^2.6"
     },
     "require-dev": {
-        "phpunit/phpunit": "^12.4",
+        "phpunit/phpunit": "^13.1",
         "squizlabs/php_codesniffer": "^4.0",
         "mockery/mockery": "^1.4"
     },
