@@ -121,21 +121,4 @@ class OpenStreetMap extends AbstractProvider
     {
         return new OpenStreetMapResourceOwner($response);
     }
-
-    /**
-     * Returns a prepared request for requesting an access token.
-     *
-     * @param array $params
-     *
-     * @return Psr\Http\Message\RequestInterface
-     */
-    protected function getAccessTokenRequest(array $params)
-    {
-        $request = parent::getAccessTokenRequest($params);
-
-        $uri = $request->getUri()
-            ->withUserInfo($this->clientId, $this->clientSecret);
-
-        return $request->withUri($uri);
-    }
 }
